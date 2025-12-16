@@ -36,7 +36,7 @@ export const Navbar: React.FC = () => {
           <img 
             src="https://raw.githubusercontent.com/wasnizam/DeepQalby/main/assets/DeeoQalby.png" 
             alt="DeepQalby Logo" 
-            className="h-8 w-auto transition-transform group-hover:scale-105" 
+            className="w-8 h-8 transition-transform group-hover:scale-105" 
           />
           <span className="text-lg font-semibold tracking-tight text-navy-900">
             DeepQalby

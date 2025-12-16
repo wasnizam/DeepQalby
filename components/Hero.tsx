@@ -10,32 +10,39 @@ interface ImageProps {
 const HeroImage: React.FC<ImageProps> = ({ title, imageSrc }) => {
   return (
     <div className="relative flex-shrink-0 w-[280px] md:w-[320px] snap-center transition-transform hover:-translate-y-2 duration-300">
-      <img 
-        src={imageSrc} 
-        alt={title} 
-        className="w-full h-auto bg-transparent drop-shadow-2xl" 
-      />
+      <div className="overflow-hidden rounded-2xl shadow-lg aspect-[3/4] relative group">
+        <img 
+          src={imageSrc} 
+          alt={title} 
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-navy-900/60 to-transparent flex items-end p-6">
+          <span className="text-white font-medium text-lg">{title}</span>
+        </div>
+      </div>
     </div>
   );
 };
 
 export const Hero: React.FC = () => {
+  const BASE_ASSET_URL = "https://raw.githubusercontent.com/wasnizam/DeepQalby/main/assets";
+  
   const images = [
     {
-      title: "Salam, Nizam",
-      imageSrc: "https://raw.githubusercontent.com/wasnizam/DeepQalby/main/assets/1.png"
+      title: "Design Philosophy",
+      imageSrc: `${BASE_ASSET_URL}/design.png`
     },
     {
-      title: "Quran Reader",
-      imageSrc: "https://raw.githubusercontent.com/wasnizam/DeepQalby/main/assets/2.png"
+      title: "Quran Reader App",
+      imageSrc: `${BASE_ASSET_URL}/quran.png`
     },
     {
-      title: "Prayer Times",
-      imageSrc: "https://raw.githubusercontent.com/wasnizam/DeepQalby/main/assets/3.png"
+      title: "Global Reach",
+      imageSrc: `${BASE_ASSET_URL}/global.png`
     },
     {
-      title: "Impact",
-      imageSrc: "https://raw.githubusercontent.com/wasnizam/DeepQalby/main/assets/4.png"
+      title: "Digital Impact",
+      imageSrc: `${BASE_ASSET_URL}/impact.png`
     }
   ];
 
@@ -68,7 +75,7 @@ export const Hero: React.FC = () => {
 
       {/* Images Scrollable Container */}
       <div className="w-full overflow-x-auto pb-12 no-scrollbar snap-x snap-mandatory px-6">
-        <div className="min-w-fit flex gap-6 md:gap-10 justify-start md:justify-center mx-auto max-w-fit items-start">
+        <div className="min-w-fit flex gap-6 md:gap-8 justify-start md:justify-center mx-auto max-w-fit items-start">
           {images.map((img, index) => (
             <HeroImage key={index} {...img} />
           ))}
