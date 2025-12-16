@@ -30,19 +30,19 @@ export const Hero: React.FC = () => {
   const images = [
     {
       title: "Design Philosophy",
-      imageSrc: `${BASE_ASSET_URL}/design.png`
+      imageSrc: `${BASE_ASSET_URL}/1.png`
     },
     {
       title: "Quran Reader App",
-      imageSrc: `${BASE_ASSET_URL}/quran.png`
+      imageSrc: `${BASE_ASSET_URL}/2.png`
     },
     {
       title: "Global Reach",
-      imageSrc: `${BASE_ASSET_URL}/global.png`
+      imageSrc: `${BASE_ASSET_URL}/3.png`
     },
     {
       title: "Digital Impact",
-      imageSrc: `${BASE_ASSET_URL}/impact.png`
+      imageSrc: `${BASE_ASSET_URL}/4.png`
     }
   ];
 
