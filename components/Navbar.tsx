@@ -34,7 +34,7 @@ export const Navbar: React.FC = () => {
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-3 group">
           <img 
-            src="https://raw.githubusercontent.com/wasnizam/DeepQalby/main/assets/DeeoQalby.png" 
+            src="https://github.com/wasnizam/DeepQalby/blob/main/assets/DeepQalby.png?raw=true" 
             alt="DeepQalby Logo" 
             className="h-8 w-auto transition-transform group-hover:scale-105" 
           />

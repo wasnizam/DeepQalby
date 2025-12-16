@@ -32,11 +32,11 @@ export const Hero: React.FC = () => {
 
       {/* Hero Image */}
       <div className="relative max-w-5xl mx-auto px-6">
-        {/* Glow effect behind the image */}
+        {/* Glow effect behind the image - kept subtle to ensure transparency is visible */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] h-[60%] bg-emerald-muted/20 rounded-full blur-3xl -z-10 pointer-events-none"></div>
         
         <img 
-          src="https://raw.githubusercontent.com/wasnizam/DeepQalby/main/assets/1.png" 
+          src="https://github.com/wasnizam/DeepQalby/blob/main/assets/1.png?raw=true" 
           alt="DeepQalby Dashboard Preview" 
           className="w-full h-auto object-contain mx-auto drop-shadow-2xl"
           style={{ maxHeight: '600px' }}
