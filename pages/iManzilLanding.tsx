@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ExternalLink, Download, Check } from 'lucide-react';
+import { ExternalLink, Download, Check, Share2 } from 'lucide-react';
 
 type Language = 'en' | 'ms';
 
@@ -8,6 +8,37 @@ export const IManzilLanding: React.FC = () => {
   const isEN = lang === 'en';
 
   const appStoreUrl = '#'; // Replace with real App Store URL when ready
+
+  const handleShare = async () => {
+    try {
+      const shareData = {
+        title: 'iManzil Pro',
+        text: isEN
+          ? 'Check out iManzil Pro – your daily Manzil and Surah Yasin companion.'
+          : 'Jom cuba iManzil Pro – teman harian anda untuk Manzil dan Surah Yasin.',
+        url: window.location.href,
+      };
+
+      if (navigator.share) {
+        await navigator.share(shareData);
+      } else if (navigator.clipboard) {
+        await navigator.clipboard.writeText(window.location.href);
+        alert(
+          isEN
+            ? 'Link copied to clipboard. You can share it anywhere.'
+            : 'Pautan disalin. Anda boleh kongsikannya di mana-mana.'
+        );
+      } else {
+        alert(
+          isEN
+            ? 'Sharing is not supported on this device. Please copy the URL from the address bar.'
+            : 'Perkongsian tidak disokong pada peranti ini. Sila salin URL dari bar alamat.'
+        );
+      }
+    } catch {
+      // ignore share errors (e.g. user cancelled)
+    }
+  };
 
   return (
     <div className="pt-20 min-h-screen bg-warm-white">
@@ -71,6 +102,14 @@ export const IManzilLanding: React.FC = () => {
                 <span>{isEN ? 'More about our apps' : 'Lagi aplikasi kami'}</span>
                 <ExternalLink size={16} />
               </a>
+              <button
+                type="button"
+                onClick={handleShare}
+                className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full border border-warm-100 bg-white text-navy-900 font-medium hover:bg-warm-50 transition-all"
+              >
+                <Share2 size={16} />
+                <span>{isEN ? 'Share this page' : 'Kongsi halaman ini'}</span>
+              </button>
             </div>
 
             <p className="text-xs text-navy-600/80">

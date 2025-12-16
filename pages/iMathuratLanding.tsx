@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ExternalLink, Download, Check } from 'lucide-react';
+import { ExternalLink, Download, Check, Share2 } from 'lucide-react';
 
 type Language = 'en' | 'ms';
 
@@ -7,6 +7,37 @@ export const IMathuratLanding: React.FC = () => {
   const [lang, setLang] = useState<Language>('en');
 
   const isEN = lang === 'en';
+
+  const handleShare = async () => {
+    try {
+      const shareData = {
+        title: 'iMathurat Pro',
+        text: isEN
+          ? 'Check out iMathurat Pro – a modern, complete Mathurat app for daily dhikr.'
+          : 'Jom cuba iMathurat Pro – aplikasi Mathurat moden dan lengkap untuk dzikir harian.',
+        url: window.location.href,
+      };
+
+      if (navigator.share) {
+        await navigator.share(shareData);
+      } else if (navigator.clipboard) {
+        await navigator.clipboard.writeText(window.location.href);
+        alert(
+          isEN
+            ? 'Link copied to clipboard. You can share it anywhere.'
+            : 'Pautan disalin. Anda boleh kongsikannya di mana-mana.'
+        );
+      } else {
+        alert(
+          isEN
+            ? 'Sharing is not supported on this device. Please copy the URL from the address bar.'
+            : 'Perkongsian tidak disokong pada peranti ini. Sila salin URL dari bar alamat.'
+        );
+      }
+    } catch (e) {
+      // Silently ignore share errors (e.g. user cancelled)
+    }
+  };
 
   return (
     <div className="pt-20 min-h-screen bg-warm-white">
@@ -72,6 +103,14 @@ export const IMathuratLanding: React.FC = () => {
                 <span>{isEN ? 'More about our apps' : 'Lagi aplikasi kami'}</span>
                 <ExternalLink size={16} />
               </a>
+              <button
+                type="button"
+                onClick={handleShare}
+                className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full border border-warm-100 bg-white text-navy-900 font-medium hover:bg-warm-50 transition-all"
+              >
+                <Share2 size={16} />
+                <span>{isEN ? 'Share this page' : 'Kongsi halaman ini'}</span>
+              </button>
             </div>
 
             <p className="text-xs text-navy-600/80">
@@ -87,7 +126,7 @@ export const IMathuratLanding: React.FC = () => {
             <div className="rounded-3xl border border-warm-100 bg-gradient-to-br from-warm-white to-warm-50 shadow-sm overflow-hidden">
               <div className="aspect-[9/16] md:aspect-[10/16] max-h-[520px] mx-auto flex items-center justify-center">
                 <img
-                  src="/assets/IMG_3687.PNG"
+                  src="/assets/3.png"
                   alt="iMathurat Pro app preview"
                   className="w-full h-full object-contain"
                 />

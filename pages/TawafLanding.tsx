@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ExternalLink, Download, Check } from 'lucide-react';
+import { ExternalLink, Download, Check, Share2 } from 'lucide-react';
 
 type Language = 'en' | 'ms';
 
@@ -8,6 +8,37 @@ export const TawafLanding: React.FC = () => {
   const isEN = lang === 'en';
 
   const appStoreUrl = 'https://apps.apple.com/ng/app/tawaf-counter/id6447226579';
+
+  const handleShare = async () => {
+    try {
+      const shareData = {
+        title: 'Tawaf Counter',
+        text: isEN
+          ? 'Check out Tawaf Counter – the ultimate Tawaf companion for Umrah and Hajj.'
+          : 'Jom cuba Tawaf Counter – teman Tawaf terbaik untuk Umrah dan Haji.',
+        url: window.location.href,
+      };
+
+      if (navigator.share) {
+        await navigator.share(shareData);
+      } else if (navigator.clipboard) {
+        await navigator.clipboard.writeText(window.location.href);
+        alert(
+          isEN
+            ? 'Link copied to clipboard. You can share it anywhere.'
+            : 'Pautan disalin. Anda boleh kongsikannya di mana-mana.'
+        );
+      } else {
+        alert(
+          isEN
+            ? 'Sharing is not supported on this device. Please copy the URL from the address bar.'
+            : 'Perkongsian tidak disokong pada peranti ini. Sila salin URL dari bar alamat.'
+        );
+      }
+    } catch {
+      // ignore share errors (e.g. user cancelled)
+    }
+  };
 
   return (
     <div className="pt-20 min-h-screen bg-warm-white">
@@ -73,6 +104,14 @@ export const TawafLanding: React.FC = () => {
                 <span>{isEN ? 'More about our apps' : 'Lagi aplikasi kami'}</span>
                 <ExternalLink size={16} />
               </a>
+              <button
+                type="button"
+                onClick={handleShare}
+                className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full border border-warm-100 bg-white text-navy-900 font-medium hover:bg-warm-50 transition-all"
+              >
+                <Share2 size={16} />
+                <span>{isEN ? 'Share this page' : 'Kongsi halaman ini'}</span>
+              </button>
             </div>
 
             <p className="text-xs text-navy-600/80">
