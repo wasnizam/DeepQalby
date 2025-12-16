@@ -420,7 +420,7 @@ export const Store: React.FC = () => {
                       </a>
                     )}
 
-                    {(app.name === 'iMathurat Pro' || app.name === 'iManzil Pro' || app.name === 'Tawaf Counter') && (
+                    {(app.name === 'iMathurat Pro' || app.name === 'iManzil Pro' || app.name === 'Tawaf Counter' || app.name === 'Ruqyah360') && (
                       <div className="flex justify-center">
                         <Link
                           to={
@@ -428,7 +428,9 @@ export const Store: React.FC = () => {
                               ? '/imathuratpro'
                               : app.name === 'iManzil Pro'
                               ? '/imanzilpro'
-                              : '/tawafcounter'
+                              : app.name === 'Tawaf Counter'
+                              ? '/tawafcounter'
+                              : '/ruqyah360'
                           }
                           className="text-xs font-medium text-navy-700 hover:text-navy-900 underline underline-offset-4"
                         >
