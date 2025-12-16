@@ -11,6 +11,7 @@ import { PrivacyPolicy } from './pages/PrivacyPolicy';
 import { Store } from './pages/Store';
 import { IMathuratLanding } from './pages/iMathuratLanding';
 import { IManzilLanding } from './pages/iManzilLanding';
+import { TawafLanding } from './pages/TawafLanding';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -35,6 +36,7 @@ function App() {
             <Route path="/store" element={<Store />} />
             <Route path="/imathuratpro" element={<IMathuratLanding />} />
             <Route path="/imanzilpro" element={<IManzilLanding />} />
+            <Route path="/tawafcounter" element={<TawafLanding />} />
             <Route path="/expertise" element={<Expertise />} />
             <Route path="/services" element={<Services />} />
             <Route path="/contact" element={<Contact />} />

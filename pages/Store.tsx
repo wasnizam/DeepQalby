@@ -328,9 +328,15 @@ export const Store: React.FC = () => {
                         </a>
                       )}
 
-                      {(app.name === 'iMathurat Pro' || app.name === 'iManzil Pro') && (
+                      {(app.name === 'iMathurat Pro' || app.name === 'iManzil Pro' || app.name === 'Tawaf Counter') && (
                         <Link
-                          to={app.name === 'iMathurat Pro' ? '/imathuratpro' : '/imanzilpro'}
+                          to={
+                            app.name === 'iMathurat Pro'
+                              ? '/imathuratpro'
+                              : app.name === 'iManzil Pro'
+                              ? '/imanzilpro'
+                              : '/tawafcounter'
+                          }
                           className="text-sm font-medium text-navy-700 hover:text-navy-900 underline underline-offset-4"
                         >
                           More
@@ -414,10 +420,16 @@ export const Store: React.FC = () => {
                       </a>
                     )}
 
-                    {(app.name === 'iMathurat Pro' || app.name === 'iManzil Pro') && (
+                    {(app.name === 'iMathurat Pro' || app.name === 'iManzil Pro' || app.name === 'Tawaf Counter') && (
                       <div className="flex justify-center">
                         <Link
-                          to={app.name === 'iMathurat Pro' ? '/imathuratpro' : '/imanzilpro'}
+                          to={
+                            app.name === 'iMathurat Pro'
+                              ? '/imathuratpro'
+                              : app.name === 'iManzil Pro'
+                              ? '/imanzilpro'
+                              : '/tawafcounter'
+                          }
                           className="text-xs font-medium text-navy-700 hover:text-navy-900 underline underline-offset-4"
                         >
                           More
