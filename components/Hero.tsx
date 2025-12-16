@@ -8,10 +8,10 @@ export const Hero: React.FC = () => {
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   
   const images = [
-    { src: '/assets/1.png', alt: 'DeepQalby Product Showcase 1' },
-    { src: '/assets/2.png', alt: 'DeepQalby Product Showcase 2' },
-    { src: '/assets/3.png', alt: 'DeepQalby Product Showcase 3' },
-    { src: '/assets/4.png', alt: 'DeepQalby Product Showcase 4' },
+    { src: '/assets/1.png', alt: 'iManzil Pro - Protection and peace of mind through daily litanies' },
+    { src: '/assets/2.png', alt: 'Ruqyah360 - Complete Ruqyah solution for spiritual healing' },
+    { src: '/assets/3.png', alt: 'iMathurat Pro - Transform your daily Mathurat into a modern spiritual lifestyle' },
+    { src: '/assets/4.png', alt: 'Tawaf Counter - The Ultimate Tawaf Companion for Pilgrims Worldwide' },
   ];
 
   // Auto-play with pause on hover (desktop only)

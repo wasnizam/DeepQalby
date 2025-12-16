@@ -16,22 +16,23 @@ interface App {
 const apps: App[] = [
   {
     id: '1',
-    name: 'Tawaf Counter',
-    description: 'The Ultimate Tawaf Companion for Pilgrims Worldwide. Complete Tawaf experience with counter, Sai, planner, tracker, prayer times, geofencing, weather, and complete duas. Available in 9 languages.',
-    category: 'Productivity',
-    icon: '/assets/1.png',
-    appStoreUrl: 'https://apps.apple.com/ng/app/tawaf-counter/id6447226579',
-    rating: 4.8,
-    featured: true
-  },
-  {
-    id: '2',
     name: 'iManzil Pro',
     description: 'Protection and peace of mind through daily litanies. Your spiritual shield.',
     category: 'FaithTech',
-    icon: '/assets/2.png',
+    icon: '/assets/1.png',
     appStoreUrl: '#',
     rating: 4.9,
+    featured: false,
+    comingSoon: true
+  },
+  {
+    id: '2',
+    name: 'Ruqyah360',
+    description: 'Complete Ruqyah solution for spiritual healing and protection. Comprehensive Islamic healing practices.',
+    category: 'FaithTech',
+    icon: '/assets/2.png',
+    appStoreUrl: '#',
+    rating: 4.8,
     featured: false,
     comingSoon: true
   },
@@ -47,21 +48,31 @@ const apps: App[] = [
   },
   {
     id: '4',
+    name: 'Tawaf Counter',
+    description: 'The Ultimate Tawaf Companion for Pilgrims Worldwide. Complete Tawaf experience with counter, Sai, planner, tracker, prayer times, geofencing, weather, and complete duas. Available in 9 languages.',
+    category: 'Productivity',
+    icon: '/assets/4.png',
+    appStoreUrl: 'https://apps.apple.com/ng/app/tawaf-counter/id6447226579',
+    rating: 4.8,
+    featured: true
+  },
+  {
+    id: '5',
     name: 'Luma',
     description: 'Mental clarity and reflection for the modern professional. Find your focus.',
     category: 'Utility',
-    icon: '/assets/4.png',
+    icon: '', // No image yet
     appStoreUrl: '#',
     rating: 4.6,
     featured: false,
     comingSoon: true
   },
   {
-    id: '5',
+    id: '6',
     name: 'Islamic Jar',
     description: 'Making charitable giving a seamless daily habit. Give with intention.',
     category: 'FaithTech',
-    icon: '/assets/1.png',
+    icon: '', // No image yet
     appStoreUrl: '#',
     rating: 4.8,
     featured: false,
@@ -100,14 +111,16 @@ export const Store: React.FC = () => {
                   key={app.id}
                   className="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 border border-warm-100"
                 >
-                  <div className="relative aspect-[16/10] bg-gradient-to-br from-warm-50 to-warm-white overflow-hidden">
-                    <img
-                      src={app.icon}
-                      alt={app.name}
-                      className="w-full h-full object-contain p-8 md:p-12 transition-transform duration-700 group-hover:scale-105"
-                      style={{ background: 'transparent' }}
-                    />
-                  </div>
+                  {app.icon && (
+                    <div className="relative aspect-[16/10] bg-gradient-to-br from-warm-50 to-warm-white overflow-hidden">
+                      <img
+                        src={app.icon}
+                        alt={app.name}
+                        className="w-full h-full object-contain p-8 md:p-12 transition-transform duration-700 group-hover:scale-105"
+                        style={{ background: 'transparent' }}
+                      />
+                    </div>
+                  )}
                   <div className="p-6 md:p-8">
                     <div className="flex items-center justify-between mb-3">
                       <div className="flex items-center gap-2">
@@ -169,14 +182,20 @@ export const Store: React.FC = () => {
                 key={app.id}
                 className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-warm-100"
               >
-                <div className="relative aspect-square bg-gradient-to-br from-warm-50 to-warm-white overflow-hidden">
-                  <img
-                    src={app.icon}
-                    alt={app.name}
-                    className="w-full h-full object-contain p-6 md:p-8 transition-transform duration-500 group-hover:scale-105"
-                    style={{ background: 'transparent' }}
-                  />
-                </div>
+                {app.icon ? (
+                  <div className="relative aspect-square bg-gradient-to-br from-warm-50 to-warm-white overflow-hidden">
+                    <img
+                      src={app.icon}
+                      alt={app.name}
+                      className="w-full h-full object-contain p-6 md:p-8 transition-transform duration-500 group-hover:scale-105"
+                      style={{ background: 'transparent' }}
+                    />
+                  </div>
+                ) : (
+                  <div className="relative aspect-square bg-gradient-to-br from-warm-50 to-warm-100 overflow-hidden flex items-center justify-center">
+                    <span className="text-navy-400 text-sm font-medium">Image Coming Soon</span>
+                  </div>
+                )}
                 <div className="p-6">
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center gap-2">
