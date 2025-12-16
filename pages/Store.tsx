@@ -1,5 +1,5 @@
-import React from 'react';
-import { ExternalLink, Download, Star } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { ExternalLink, Download, Star, ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface App {
   id: string;
@@ -81,8 +81,46 @@ const apps: App[] = [
 ];
 
 export const Store: React.FC = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  
   const featuredApps = apps.filter(app => app.featured);
   const otherApps = apps.filter(app => !app.featured);
+  const appsWithImages = apps.filter(app => app.icon); // Only apps with images for slider
+
+  // Auto-play slider
+  useEffect(() => {
+    const isDesktop = window.matchMedia('(hover: hover)').matches;
+    
+    if (!isPaused || !isDesktop) {
+      intervalRef.current = setInterval(() => {
+        setCurrentSlide((prev) => (prev + 1) % appsWithImages.length);
+      }, 4000);
+    } else {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    }
+
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
+  }, [isPaused, appsWithImages.length]);
+
+  const goToSlide = (index: number) => {
+    setCurrentSlide(index);
+  };
+
+  const goToPrevious = () => {
+    setCurrentSlide((prev) => (prev - 1 + appsWithImages.length) % appsWithImages.length);
+  };
+
+  const goToNext = () => {
+    setCurrentSlide((prev) => (prev + 1) % appsWithImages.length);
+  };
 
   return (
     <div className="pt-20 min-h-screen bg-warm-white">
@@ -95,6 +133,115 @@ export const Store: React.FC = () => {
           <p className="text-xl md:text-2xl text-navy-600 max-w-2xl mx-auto leading-relaxed">
             Purpose-driven digital products designed with intention and care.
           </p>
+        </div>
+      </section>
+
+      {/* Apple-Style Promotional Slider */}
+      <section 
+        className="py-12 md:py-20 px-6 bg-gradient-to-b from-warm-white to-warm-50"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+      >
+        <div className="max-w-7xl mx-auto">
+          <div className="relative group">
+            <div className="relative min-h-[500px] md:min-h-[700px] rounded-3xl overflow-hidden bg-gradient-to-br from-navy-900/5 to-warm-50">
+              {/* Slider Images */}
+              {appsWithImages.map((app, index) => (
+                <div
+                  key={app.id}
+                  className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                    currentSlide === index ? 'opacity-100 z-10' : 'opacity-0 z-0'
+                  }`}
+                >
+                  <div className="flex flex-col md:flex-row items-center justify-center h-full p-8 md:p-16 gap-8 md:gap-16">
+                    {/* App Image */}
+                    <div className="flex-1 flex items-center justify-center max-w-2xl">
+                      <img
+                        src={app.icon}
+                        alt={app.name}
+                        className="w-full h-full max-h-[400px] md:max-h-[600px] object-contain transition-transform duration-700"
+                        style={{ background: 'transparent' }}
+                      />
+                    </div>
+                    
+                    {/* App Info */}
+                    <div className="flex-1 text-center md:text-left max-w-xl">
+                      <div className="mb-4">
+                        <span className="text-xs font-medium text-emerald-muted uppercase tracking-wider">
+                          {app.category}
+                        </span>
+                        {app.comingSoon && (
+                          <span className="ml-3 text-xs font-medium text-navy-600 bg-warm-100 px-3 py-1 rounded-full">
+                            Coming Soon
+                          </span>
+                        )}
+                      </div>
+                      <h2 className="text-4xl md:text-6xl font-semibold text-navy-900 mb-4 tracking-tight">
+                        {app.name}
+                      </h2>
+                      <p className="text-lg md:text-xl text-navy-600 mb-8 leading-relaxed">
+                        {app.description}
+                      </p>
+                      {app.rating && (
+                        <div className="flex items-center justify-center md:justify-start gap-2 mb-8">
+                          <Star size={20} className="text-yellow-400 fill-yellow-400" />
+                          <span className="text-lg font-medium text-navy-600">{app.rating}</span>
+                        </div>
+                      )}
+                      {app.comingSoon ? (
+                        <div className="inline-flex items-center gap-2 px-8 py-4 bg-navy-600 text-white rounded-full font-medium cursor-not-allowed opacity-75">
+                          <span>Coming Soon</span>
+                        </div>
+                      ) : (
+                        <a
+                          href={app.appStoreUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 px-8 py-4 bg-navy-900 text-white rounded-full font-medium hover:bg-navy-800 transition-all shadow-lg hover:shadow-xl group/link"
+                        >
+                          <Download size={20} />
+                          <span>Download on App Store</span>
+                          <ExternalLink size={18} className="opacity-70 group-hover/link:opacity-100 transition-opacity" />
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              ))}
+
+              {/* Navigation Arrows */}
+              <button
+                onClick={goToPrevious}
+                className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-navy-900 rounded-full p-2 md:p-3 shadow-lg transition-all opacity-100 md:opacity-0 md:group-hover:opacity-100 hover:scale-110 z-20"
+                aria-label="Previous app"
+              >
+                <ChevronLeft size={24} className="md:w-6 md:h-6" />
+              </button>
+              <button
+                onClick={goToNext}
+                className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-navy-900 rounded-full p-2 md:p-3 shadow-lg transition-all opacity-100 md:opacity-0 md:group-hover:opacity-100 hover:scale-110 z-20"
+                aria-label="Next app"
+              >
+                <ChevronRight size={24} className="md:w-6 md:h-6" />
+              </button>
+
+              {/* Dot Indicators */}
+              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+                {appsWithImages.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => goToSlide(index)}
+                    className={`transition-all duration-300 rounded-full ${
+                      currentSlide === index
+                        ? 'bg-navy-900 w-10 h-2'
+                        : 'bg-navy-900/20 hover:bg-navy-900/40 w-2 h-2'
+                    }`}
+                    aria-label={`Go to ${appsWithImages[index].name}`}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
