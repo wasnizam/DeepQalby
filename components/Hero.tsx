@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 export const Hero: React.FC = () => {
   return (
-    <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden">
+    <section className="relative pt-32 pb-8 md:pt-48 md:pb-12 overflow-hidden">
       <div className="max-w-4xl mx-auto text-center px-6">
         <h1 className="text-4xl md:text-6xl font-semibold tracking-tight text-navy-900 mb-6 leading-[1.1]">
           Purpose-driven <br className="hidden md:block" /> digital products.
@@ -13,7 +13,7 @@ export const Hero: React.FC = () => {
           DeepQalby is a product studio. We build our own FaithTech platforms and help founders ship exceptional mobile apps and SaaS.
         </p>
         
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
           <Link 
             to="/services" 
             className="w-full sm:w-auto px-8 py-3.5 bg-navy-900 text-white rounded-full font-medium hover:bg-navy-800 transition-all shadow-sm hover:shadow-md flex items-center justify-center gap-2 group"
@@ -27,6 +27,44 @@ export const Hero: React.FC = () => {
           >
             Explore Our Products
           </Link>
+        </div>
+      </div>
+
+      {/* Hero Images Gallery */}
+      <div className="relative max-w-7xl mx-auto px-6 mb-0">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 items-center">
+          <div className="group flex items-center justify-center">
+            <img 
+              src="/assets/1.png" 
+              alt="DeepQalby Product Showcase 1" 
+              className="w-full h-auto max-h-[600px] md:max-h-[700px] object-contain transition-transform duration-300 group-hover:scale-105"
+              style={{ background: 'transparent' }}
+            />
+          </div>
+          <div className="group flex items-center justify-center">
+            <img 
+              src="/assets/2.png" 
+              alt="DeepQalby Product Showcase 2" 
+              className="w-full h-auto max-h-[600px] md:max-h-[700px] object-contain transition-transform duration-300 group-hover:scale-105"
+              style={{ background: 'transparent' }}
+            />
+          </div>
+          <div className="group flex items-center justify-center">
+            <img 
+              src="/assets/3.png" 
+              alt="DeepQalby Product Showcase 3" 
+              className="w-full h-auto max-h-[600px] md:max-h-[700px] object-contain transition-transform duration-300 group-hover:scale-105"
+              style={{ background: 'transparent' }}
+            />
+          </div>
+          <div className="group flex items-center justify-center">
+            <img 
+              src="/assets/4.png" 
+              alt="DeepQalby Product Showcase 4" 
+              className="w-full h-auto max-h-[600px] md:max-h-[700px] object-contain transition-transform duration-300 group-hover:scale-105"
+              style={{ background: 'transparent' }}
+            />
+          </div>
         </div>
       </div>
 

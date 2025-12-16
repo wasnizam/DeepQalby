@@ -7,7 +7,7 @@ export const Footer: React.FC = () => {
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
         <Link to="/" className="flex items-center gap-3">
           <img 
-            src="https://github.com/wasnizam/DeepQalby/blob/main/assets/DeepQalby.png?raw=true" 
+            src="/assets/DeeoQalby.png" 
             alt="DeepQalby Logo" 
             className="h-8 w-auto grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all" 
           />
