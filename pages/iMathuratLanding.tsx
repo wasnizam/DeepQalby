@@ -81,29 +81,16 @@ export const IMathuratLanding: React.FC = () => {
             </p>
           </div>
 
-          {/* Hero Visual Placeholder (you can replace image later) */}
+          {/* Hero Visual */}
           <div className="relative">
             <div className="absolute inset-0 bg-emerald-muted/10 blur-3xl rounded-full -z-10" />
             <div className="rounded-3xl border border-warm-100 bg-gradient-to-br from-warm-white to-warm-50 shadow-sm overflow-hidden">
               <div className="aspect-[9/16] md:aspect-[10/16] max-h-[520px] mx-auto flex items-center justify-center">
-                {/* Replace this container with your actual marketing image later */}
-                <div className="w-full h-full flex items-center justify-center">
-                  <div className="text-center px-6 py-10">
-                    <p className="text-xs font-medium tracking-[0.2em] uppercase text-emerald-muted mb-3">
-                      {isEN ? 'Preview' : 'Pratonton'}
-                    </p>
-                    <p className="text-base md:text-lg text-navy-600 mb-3">
-                      {isEN
-                        ? 'Add your iMathurat Pro poster / device mockup here.'
-                        : 'Letakkan poster / mockup peranti iMathurat Pro anda di sini.'}
-                    </p>
-                    <p className="text-xs text-navy-600/70">
-                      {isEN
-                        ? 'Place image at public/assets/imathurat-hero.png and update this component when ready.'
-                        : 'Letakkan imej di public/assets/imathurat-hero.png dan kemas kini komponen ini bila sedia.'}
-                    </p>
-                  </div>
-                </div>
+                <img
+                  src="/assets/IMG_3687.PNG"
+                  alt="iMathurat Pro app preview"
+                  className="w-full h-full object-contain"
+                />
               </div>
             </div>
           </div>
