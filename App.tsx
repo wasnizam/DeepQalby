@@ -32,7 +32,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/products" element={<Products />} />
             <Route path="/store" element={<Store />} />
-            <Route path="/imathurat-pro" element={<IMathuratLanding />} />
+            <Route path="/imathuratpro" element={<IMathuratLanding />} />
             <Route path="/expertise" element={<Expertise />} />
             <Route path="/services" element={<Services />} />
             <Route path="/contact" element={<Contact />} />
