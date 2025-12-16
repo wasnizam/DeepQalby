@@ -14,9 +14,12 @@ export const Hero: React.FC = () => {
     { src: '/assets/4.png', alt: 'DeepQalby Product Showcase 4' },
   ];
 
-  // Auto-play with pause on hover
+  // Auto-play with pause on hover (desktop only)
   useEffect(() => {
-    if (!isPaused) {
+    // Only pause on desktop (has hover capability)
+    const isDesktop = window.matchMedia('(hover: hover)').matches;
+    
+    if (!isPaused || !isDesktop) {
       intervalRef.current = setInterval(() => {
         setCurrentSlide((prev) => (prev + 1) % images.length);
       }, 4000); // Change every 4 seconds
@@ -75,8 +78,17 @@ export const Hero: React.FC = () => {
       {/* Apple-Style Fade Transition Gallery */}
       <div 
         className="relative max-w-6xl mx-auto px-4 sm:px-6 mb-8 group"
-        onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}
+        onMouseEnter={() => {
+          // Only pause on devices that support hover (desktop)
+          if (window.matchMedia('(hover: hover)').matches) {
+            setIsPaused(true);
+          }
+        }}
+        onMouseLeave={() => {
+          if (window.matchMedia('(hover: hover)').matches) {
+            setIsPaused(false);
+          }
+        }}
       >
         <div className="relative min-h-[500px] sm:min-h-[600px] md:aspect-[4/3] md:min-h-0 md:max-h-[800px]">
           {/* Images with fade transition */}
@@ -118,7 +130,6 @@ export const Hero: React.FC = () => {
               <button
                 key={index}
                 onClick={() => goToSlide(index)}
-                onMouseEnter={() => setIsPaused(true)}
                 className={`transition-all duration-300 rounded-full ${
                   currentSlide === index
                     ? 'bg-navy-900 w-8 h-1.5'
