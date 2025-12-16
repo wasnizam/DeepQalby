@@ -144,7 +144,7 @@ export const Store: React.FC = () => {
       >
         <div className="max-w-7xl mx-auto">
           <div className="relative group">
-            <div className="relative min-h-[500px] md:min-h-[700px] rounded-3xl overflow-hidden bg-gradient-to-br from-navy-900/5 to-warm-50">
+            <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-navy-900/5 to-warm-50">
               {/* Slider Images */}
               {appsWithImages.map((app, index) => (
                 <div
@@ -153,19 +153,19 @@ export const Store: React.FC = () => {
                     currentSlide === index ? 'opacity-100 z-10' : 'opacity-0 z-0'
                   }`}
                 >
-                  <div className="flex flex-col md:flex-row items-center justify-center h-full p-8 md:p-16 gap-8 md:gap-16">
+                  <div className="flex flex-col md:flex-row items-center justify-center p-8 md:p-16 gap-10 md:gap-16">
                     {/* App Image */}
-                    <div className="flex-1 flex items-center justify-center max-w-2xl">
+                    <div className="flex-1 flex items-center justify-center max-w-2xl w-full">
                       <img
                         src={app.icon}
                         alt={app.name}
-                        className="w-full h-full max-h-[400px] md:max-h-[600px] object-contain transition-transform duration-700"
+                        className="w-full h-auto max-h-[360px] sm:max-h-[420px] md:max-h-[560px] object-contain transition-transform duration-700"
                         style={{ background: 'transparent' }}
                       />
                     </div>
                     
                     {/* App Info */}
-                    <div className="flex-1 text-center md:text-left max-w-xl">
+                    <div className="flex-1 text-center md:text-left max-w-xl mt-6 md:mt-0">
                       <div className="mb-4">
                         <span className="text-xs font-medium text-emerald-muted uppercase tracking-wider">
                           {app.category}
@@ -225,8 +225,8 @@ export const Store: React.FC = () => {
                 <ChevronRight size={24} className="md:w-6 md:h-6" />
               </button>
 
-              {/* Dot Indicators */}
-              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+              {/* Dot Indicators - desktop (overlay) */}
+              <div className="hidden md:flex absolute bottom-6 left-1/2 -translate-x-1/2 gap-2 z-20">
                 {appsWithImages.map((_, index) => (
                   <button
                     key={index}
@@ -240,6 +240,22 @@ export const Store: React.FC = () => {
                   />
                 ))}
               </div>
+            </div>
+
+            {/* Dot Indicators - mobile (below slider) */}
+            <div className="flex md:hidden justify-center mt-4 gap-2">
+              {appsWithImages.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => goToSlide(index)}
+                  className={`transition-all duration-300 rounded-full ${
+                    currentSlide === index
+                      ? 'bg-navy-900 w-8 h-2'
+                      : 'bg-navy-900/20 hover:bg-navy-900/40 w-2 h-2'
+                  }`}
+                  aria-label={`Go to ${appsWithImages[index].name}`}
+                />
+              ))}
             </div>
           </div>
         </div>
