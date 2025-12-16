@@ -1,8 +1,50 @@
-import React from 'react';
-import { ArrowRight } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export const Hero: React.FC = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  
+  const images = [
+    { src: '/assets/1.png', alt: 'DeepQalby Product Showcase 1' },
+    { src: '/assets/2.png', alt: 'DeepQalby Product Showcase 2' },
+    { src: '/assets/3.png', alt: 'DeepQalby Product Showcase 3' },
+    { src: '/assets/4.png', alt: 'DeepQalby Product Showcase 4' },
+  ];
+
+  // Auto-play with pause on hover
+  useEffect(() => {
+    if (!isPaused) {
+      intervalRef.current = setInterval(() => {
+        setCurrentSlide((prev) => (prev + 1) % images.length);
+      }, 4000); // Change every 4 seconds
+    } else {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    }
+
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
+  }, [isPaused, images.length]);
+
+  const goToSlide = (index: number) => {
+    setCurrentSlide(index);
+  };
+
+  const goToPrevious = () => {
+    setCurrentSlide((prev) => (prev - 1 + images.length) % images.length);
+  };
+
+  const goToNext = () => {
+    setCurrentSlide((prev) => (prev + 1) % images.length);
+  };
+
   return (
     <section className="relative pt-32 pb-8 md:pt-48 md:pb-12 overflow-hidden">
       <div className="max-w-4xl mx-auto text-center px-6">
@@ -30,40 +72,61 @@ export const Hero: React.FC = () => {
         </div>
       </div>
 
-      {/* Hero Images Gallery */}
-      <div className="relative max-w-7xl mx-auto px-6 mb-0">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 items-center">
-          <div className="group flex items-center justify-center">
-            <img 
-              src="/assets/1.png" 
-              alt="DeepQalby Product Showcase 1" 
-              className="w-full h-auto max-h-[600px] md:max-h-[700px] object-contain transition-transform duration-300 group-hover:scale-105"
-              style={{ background: 'transparent' }}
-            />
-          </div>
-          <div className="group flex items-center justify-center">
-            <img 
-              src="/assets/2.png" 
-              alt="DeepQalby Product Showcase 2" 
-              className="w-full h-auto max-h-[600px] md:max-h-[700px] object-contain transition-transform duration-300 group-hover:scale-105"
-              style={{ background: 'transparent' }}
-            />
-          </div>
-          <div className="group flex items-center justify-center">
-            <img 
-              src="/assets/3.png" 
-              alt="DeepQalby Product Showcase 3" 
-              className="w-full h-auto max-h-[600px] md:max-h-[700px] object-contain transition-transform duration-300 group-hover:scale-105"
-              style={{ background: 'transparent' }}
-            />
-          </div>
-          <div className="group flex items-center justify-center">
-            <img 
-              src="/assets/4.png" 
-              alt="DeepQalby Product Showcase 4" 
-              className="w-full h-auto max-h-[600px] md:max-h-[700px] object-contain transition-transform duration-300 group-hover:scale-105"
-              style={{ background: 'transparent' }}
-            />
+      {/* Apple-Style Fade Transition Gallery */}
+      <div 
+        className="relative max-w-6xl mx-auto px-6 mb-8 group"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+      >
+        <div className="relative aspect-square md:aspect-[4/3] max-h-[700px] md:max-h-[800px]">
+          {/* Images with fade transition */}
+          {images.map((image, index) => (
+            <div
+              key={index}
+              className={`absolute inset-0 flex items-center justify-center transition-opacity duration-1000 ease-in-out ${
+                currentSlide === index ? 'opacity-100 z-10' : 'opacity-0 z-0'
+              }`}
+            >
+              <img 
+                src={image.src} 
+                alt={image.alt} 
+                className="w-full h-full max-w-5xl max-h-[700px] md:max-h-[800px] object-contain"
+                style={{ background: 'transparent' }}
+              />
+            </div>
+          ))}
+
+          {/* Minimal Navigation Arrows - Only show on hover */}
+          <button
+            onClick={goToPrevious}
+            className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-navy-900 rounded-full p-1.5 md:p-2 shadow-md transition-all opacity-0 group-hover:opacity-100 hover:scale-110 z-20"
+            aria-label="Previous image"
+          >
+            <ChevronLeft size={20} className="md:w-6 md:h-6" />
+          </button>
+          <button
+            onClick={goToNext}
+            className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-navy-900 rounded-full p-1.5 md:p-2 shadow-md transition-all opacity-0 group-hover:opacity-100 hover:scale-110 z-20"
+            aria-label="Next image"
+          >
+            <ChevronRight size={20} className="md:w-6 md:h-6" />
+          </button>
+
+          {/* Minimal Dot Indicators - Apple style */}
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-1.5 z-20">
+            {images.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => goToSlide(index)}
+                onMouseEnter={() => setIsPaused(true)}
+                className={`transition-all duration-300 rounded-full ${
+                  currentSlide === index
+                    ? 'bg-navy-900 w-8 h-1.5'
+                    : 'bg-navy-900/20 hover:bg-navy-900/40 w-1.5 h-1.5'
+                }`}
+                aria-label={`Go to image ${index + 1}`}
+              />
+            ))}
           </div>
         </div>
       </div>
