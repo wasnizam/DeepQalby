@@ -10,6 +10,7 @@ interface App {
   appStoreUrl: string;
   rating?: number;
   featured?: boolean;
+  comingSoon?: boolean;
 }
 
 const apps: App[] = [
@@ -29,9 +30,10 @@ const apps: App[] = [
     description: 'Protection and peace of mind through daily litanies. Your spiritual shield.',
     category: 'FaithTech',
     icon: '/assets/2.png',
-    appStoreUrl: 'https://apps.apple.com/app/imanzil-pro', // Update when available
+    appStoreUrl: '#',
     rating: 4.9,
-    featured: true
+    featured: false,
+    comingSoon: true
   },
   {
     id: '3',
@@ -49,19 +51,21 @@ const apps: App[] = [
     description: 'Mental clarity and reflection for the modern professional. Find your focus.',
     category: 'Utility',
     icon: '/assets/4.png',
-    appStoreUrl: 'https://apps.apple.com/app/luma', // Update when available
+    appStoreUrl: '#',
     rating: 4.6,
-    featured: false
+    featured: false,
+    comingSoon: true
   },
   {
     id: '5',
     name: 'Islamic Jar',
     description: 'Making charitable giving a seamless daily habit. Give with intention.',
     category: 'FaithTech',
-    icon: '/assets/1.png', // Update when you have a specific icon
-    appStoreUrl: 'https://apps.apple.com/app/islamic-jar', // Update when available
+    icon: '/assets/1.png',
+    appStoreUrl: '#',
     rating: 4.8,
-    featured: false
+    featured: false,
+    comingSoon: true
   },
 ];
 
@@ -106,9 +110,16 @@ export const Store: React.FC = () => {
                   </div>
                   <div className="p-6 md:p-8">
                     <div className="flex items-center justify-between mb-3">
-                      <span className="text-xs font-medium text-emerald-muted uppercase tracking-wider">
-                        {app.category}
-                      </span>
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs font-medium text-emerald-muted uppercase tracking-wider">
+                          {app.category}
+                        </span>
+                        {app.comingSoon && (
+                          <span className="text-xs font-medium text-navy-600 bg-warm-100 px-2 py-1 rounded-full">
+                            Coming Soon
+                          </span>
+                        )}
+                      </div>
                       {app.rating && (
                         <div className="flex items-center gap-1">
                           <Star size={14} className="text-yellow-400 fill-yellow-400" />
@@ -122,16 +133,22 @@ export const Store: React.FC = () => {
                     <p className="text-navy-600 mb-6 leading-relaxed">
                       {app.description}
                     </p>
-                    <a
-                      href={app.appStoreUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-6 py-3 bg-navy-900 text-white rounded-full font-medium hover:bg-navy-800 transition-all shadow-sm hover:shadow-md group/link"
-                    >
-                      <Download size={18} />
-                      <span>Download on App Store</span>
-                      <ExternalLink size={16} className="opacity-70 group-hover/link:opacity-100 transition-opacity" />
-                    </a>
+                    {app.comingSoon ? (
+                      <div className="inline-flex items-center gap-2 px-6 py-3 bg-navy-600 text-white rounded-full font-medium cursor-not-allowed opacity-75">
+                        <span>Coming Soon</span>
+                      </div>
+                    ) : (
+                      <a
+                        href={app.appStoreUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-6 py-3 bg-navy-900 text-white rounded-full font-medium hover:bg-navy-800 transition-all shadow-sm hover:shadow-md group/link"
+                      >
+                        <Download size={18} />
+                        <span>Download on App Store</span>
+                        <ExternalLink size={16} className="opacity-70 group-hover/link:opacity-100 transition-opacity" />
+                      </a>
+                    )}
                   </div>
                 </div>
               ))}
@@ -162,9 +179,16 @@ export const Store: React.FC = () => {
                 </div>
                 <div className="p-6">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs font-medium text-emerald-muted uppercase tracking-wider">
-                      {app.category}
-                    </span>
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs font-medium text-emerald-muted uppercase tracking-wider">
+                        {app.category}
+                      </span>
+                      {app.comingSoon && (
+                        <span className="text-xs font-medium text-navy-600 bg-warm-100 px-2 py-0.5 rounded-full">
+                          Coming Soon
+                        </span>
+                      )}
+                    </div>
                     {app.rating && (
                       <div className="flex items-center gap-1">
                         <Star size={12} className="text-yellow-400 fill-yellow-400" />
@@ -178,16 +202,22 @@ export const Store: React.FC = () => {
                   <p className="text-sm text-navy-600 mb-4 leading-relaxed line-clamp-2">
                     {app.description}
                   </p>
-                  <a
-                    href={app.appStoreUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2 bg-navy-900 text-white rounded-full text-sm font-medium hover:bg-navy-800 transition-all w-full justify-center group/link"
-                  >
-                    <Download size={16} />
-                    <span>Get</span>
-                    <ExternalLink size={14} className="opacity-70 group-hover/link:opacity-100 transition-opacity" />
-                  </a>
+                  {app.comingSoon ? (
+                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-navy-600 text-white rounded-full text-sm font-medium cursor-not-allowed opacity-75 w-full justify-center">
+                      <span>Coming Soon</span>
+                    </div>
+                  ) : (
+                    <a
+                      href={app.appStoreUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-4 py-2 bg-navy-900 text-white rounded-full text-sm font-medium hover:bg-navy-800 transition-all w-full justify-center group/link"
+                    >
+                      <Download size={16} />
+                      <span>Get</span>
+                      <ExternalLink size={14} className="opacity-70 group-hover/link:opacity-100 transition-opacity" />
+                    </a>
+                  )}
                 </div>
               </div>
             ))}
