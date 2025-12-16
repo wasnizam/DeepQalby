@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { ArrowRight, ImageOff } from 'lucide-react';
+import React from 'react';
+import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 interface ImageProps {
@@ -8,27 +8,13 @@ interface ImageProps {
 }
 
 const HeroImage: React.FC<ImageProps> = ({ title, imageSrc }) => {
-  const [imgError, setImgError] = useState(false);
-
   return (
     <div className="relative flex-shrink-0 w-[280px] md:w-[320px] snap-center transition-transform hover:-translate-y-2 duration-300">
-      <div className="overflow-hidden rounded-2xl shadow-lg aspect-[3/4] relative group bg-navy-800">
-        {!imgError ? (
-          <img 
-            src={imageSrc} 
-            alt={title} 
-            onError={() => setImgError(true)}
-            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
-          />
-        ) : (
-          <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-navy-800 to-navy-900">
-             <ImageOff className="text-navy-600/30 w-12 h-12" />
-          </div>
-        )}
-        <div className="absolute inset-0 bg-gradient-to-t from-navy-900/90 via-navy-900/20 to-transparent flex items-end p-6">
-          <span className="text-white font-medium text-lg">{title}</span>
-        </div>
-      </div>
+      <img 
+        src={imageSrc} 
+        alt={title} 
+        className="w-full h-auto bg-transparent drop-shadow-2xl" 
+      />
     </div>
   );
 };
@@ -36,19 +22,19 @@ const HeroImage: React.FC<ImageProps> = ({ title, imageSrc }) => {
 export const Hero: React.FC = () => {
   const images = [
     {
-      title: "Design Philosophy",
+      title: "Salam, Nizam",
       imageSrc: "https://raw.githubusercontent.com/wasnizam/DeepQalby/main/assets/1.png"
     },
     {
-      title: "Quran Reader App",
+      title: "Quran Reader",
       imageSrc: "https://raw.githubusercontent.com/wasnizam/DeepQalby/main/assets/2.png"
     },
     {
-      title: "Global Reach",
+      title: "Prayer Times",
       imageSrc: "https://raw.githubusercontent.com/wasnizam/DeepQalby/main/assets/3.png"
     },
     {
-      title: "Digital Impact",
+      title: "Impact",
       imageSrc: "https://raw.githubusercontent.com/wasnizam/DeepQalby/main/assets/4.png"
     }
   ];
@@ -82,7 +68,7 @@ export const Hero: React.FC = () => {
 
       {/* Images Scrollable Container */}
       <div className="w-full overflow-x-auto pb-12 no-scrollbar snap-x snap-mandatory px-6">
-        <div className="min-w-fit flex gap-6 md:gap-8 justify-start md:justify-center mx-auto max-w-fit items-start">
+        <div className="min-w-fit flex gap-6 md:gap-10 justify-start md:justify-center mx-auto max-w-fit items-start">
           {images.map((img, index) => (
             <HeroImage key={index} {...img} />
           ))}

@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Hexagon } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 
 export const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [logoError, setLogoError] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -34,16 +33,11 @@ export const Navbar: React.FC = () => {
     >
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-3 group">
-          {!logoError ? (
-            <img 
-              src="https://raw.githubusercontent.com/wasnizam/DeepQalby/main/assets/DeeoQalby.png" 
-              alt="DeepQalby Logo" 
-              onError={() => setLogoError(true)}
-              className="w-8 h-8 transition-transform group-hover:scale-105" 
-            />
-          ) : (
-            <Hexagon className="w-8 h-8 text-navy-900 fill-navy-900/10" strokeWidth={1.5} />
-          )}
+          <img 
+            src="https://raw.githubusercontent.com/wasnizam/DeepQalby/main/assets/DeeoQalby.png" 
+            alt="DeepQalby Logo" 
+            className="h-8 w-auto transition-transform group-hover:scale-105" 
+          />
           <span className="text-lg font-semibold tracking-tight text-navy-900">
             DeepQalby
           </span>
