@@ -19,6 +19,7 @@ export const Footer: React.FC = () => {
         <div className="flex gap-8 text-sm text-navy-600 flex-wrap justify-center">
           <Link to="/" className="hover:text-navy-900 transition-colors">Home</Link>
           <Link to="/products" className="hover:text-navy-900 transition-colors">Products</Link>
+          <Link to="/store" className="hover:text-navy-900 transition-colors">Store</Link>
           <Link to="/expertise" className="hover:text-navy-900 transition-colors">Expertise</Link>
           <Link to="/services" className="hover:text-navy-900 transition-colors">Services</Link>
           <Link to="/contact" className="hover:text-navy-900 transition-colors">Contact</Link>

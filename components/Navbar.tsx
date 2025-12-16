@@ -46,6 +46,7 @@ export const Navbar: React.FC = () => {
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center space-x-8">
           <Link to="/products" className={linkClass('/products')}>Products</Link>
+          <Link to="/store" className={linkClass('/store')}>Store</Link>
           <Link to="/expertise" className={linkClass('/expertise')}>Expertise</Link>
           <Link to="/services" className={linkClass('/services')}>Services</Link>
           <Link to="/contact" className={linkClass('/contact')}>Contact</Link>
@@ -67,6 +68,7 @@ export const Navbar: React.FC = () => {
       {isMobileMenuOpen && (
         <div className="md:hidden absolute top-full left-0 right-0 bg-warm-white border-b border-warm-100 p-6 flex flex-col space-y-4 shadow-lg h-screen">
           <Link to="/products" onClick={() => setIsMobileMenuOpen(false)} className={mobileLinkClass('/products')}>Products</Link>
+          <Link to="/store" onClick={() => setIsMobileMenuOpen(false)} className={mobileLinkClass('/store')}>Store</Link>
           <Link to="/expertise" onClick={() => setIsMobileMenuOpen(false)} className={mobileLinkClass('/expertise')}>Expertise</Link>
           <Link to="/services" onClick={() => setIsMobileMenuOpen(false)} className={mobileLinkClass('/services')}>Services</Link>
           <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)} className={mobileLinkClass('/contact')}>Contact</Link>
