@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 export const Hero: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   
   const images = [
     { src: '/assets/1.png', alt: 'DeepQalby Product Showcase 1' },
