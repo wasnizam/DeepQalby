@@ -144,7 +144,7 @@ export const Store: React.FC = () => {
       >
         <div className="max-w-7xl mx-auto">
           <div className="relative group">
-            <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-navy-900/5 to-warm-50">
+            <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-navy-900/5 to-warm-50 min-h-[420px] md:min-h-[640px]">
               {/* Slider Images */}
               {appsWithImages.map((app, index) => (
                 <div
