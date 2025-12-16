@@ -8,9 +8,9 @@ export const Process: React.FC = () => {
   ];
 
   return (
-    <section className="py-24 bg-white border-t border-slate-100">
+    <section className="py-24 bg-warm-white border-t border-warm-100">
       <div className="max-w-6xl mx-auto px-6">
-        <h2 className="text-3xl font-semibold tracking-tight text-slate-900 mb-16">
+        <h2 className="text-3xl font-semibold tracking-tight text-navy-900 mb-16">
           From idea to launch.
         </h2>
 
@@ -18,13 +18,13 @@ export const Process: React.FC = () => {
           {steps.map((step, idx) => (
             <div key={idx} className="relative">
               {idx !== steps.length - 1 && (
-                <div className="hidden md:block absolute top-6 left-12 right-0 h-px bg-slate-100 -z-10"></div>
+                <div className="hidden md:block absolute top-6 left-12 right-0 h-px bg-warm-100 -z-10"></div>
               )}
-              <div className="w-12 h-12 rounded-full bg-slate-900 text-white text-lg font-medium flex items-center justify-center mb-6 ring-8 ring-white">
+              <div className="w-12 h-12 rounded-full bg-navy-900 text-white text-lg font-medium flex items-center justify-center mb-6 ring-8 ring-warm-white">
                 {step.num}
               </div>
-              <h3 className="text-xl font-semibold text-slate-900 mb-3">{step.title}</h3>
-              <p className="text-slate-600 leading-relaxed">
+              <h3 className="text-xl font-semibold text-navy-900 mb-3">{step.title}</h3>
+              <p className="text-navy-600 leading-relaxed">
                 {step.desc}
               </p>
             </div>

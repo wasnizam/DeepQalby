@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DeepQalby | Digital Product Studio</title>
+    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/wasnizam/DeepQalby/main/assets/DeeoQalby.png" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <script>
@@ -14,8 +15,20 @@
               sans: ['Inter', 'sans-serif'],
             },
             colors: {
-              slate: {
-                850: '#1e293b', // Custom dark for headers
+              navy: {
+                900: '#0B1E3B', // Deep Navy (Primary)
+                800: '#162A4C',
+                700: '#253B63',
+                600: '#4A5D7E', // Subtext
+              },
+              warm: {
+                50: '#F5F2EB',  // Warm Sand (Section BG)
+                100: '#EBE7DE', // Borders
+                white: '#FFFCF8', // Warm Off-White (Main BG)
+              },
+              emerald: {
+                muted: '#2D7A5D', // Muted Emerald (Accent)
+                light: '#E2F0E9', // Accent BG
               }
             }
           },
@@ -27,6 +40,8 @@
         font-family: 'Inter', sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
+        background-color: #FFFCF8; /* warm-white */
+        color: #0B1E3B; /* navy-900 */
       }
       /* Hide scrollbar for clean horizontal scrolling if needed */
       .no-scrollbar::-webkit-scrollbar {
@@ -51,7 +66,7 @@
 }
 </script>
 </head>
-  <body class="bg-white text-slate-900">
+  <body class="bg-warm-white text-navy-900">
     <div id="root"></div>
   </body>
 </html>
