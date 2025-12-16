@@ -9,6 +9,7 @@ import { Services } from './pages/Services';
 import { Contact } from './pages/Contact';
 import { PrivacyPolicy } from './pages/PrivacyPolicy';
 import { Store } from './pages/Store';
+import { IMathuratLanding } from './pages/iMathuratLanding';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -31,6 +32,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/products" element={<Products />} />
             <Route path="/store" element={<Store />} />
+            <Route path="/imathurat-pro" element={<IMathuratLanding />} />
             <Route path="/expertise" element={<Expertise />} />
             <Route path="/services" element={<Services />} />
             <Route path="/contact" element={<Contact />} />
