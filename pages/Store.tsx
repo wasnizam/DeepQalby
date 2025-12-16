@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { ExternalLink, Download, Star, ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface App {
@@ -309,22 +310,33 @@ export const Store: React.FC = () => {
                     <p className="text-navy-600 mb-6 leading-relaxed">
                       {app.description}
                     </p>
-                    {app.comingSoon ? (
-                      <div className="inline-flex items-center gap-2 px-6 py-3 bg-navy-600 text-white rounded-full font-medium cursor-not-allowed opacity-75">
-                        <span>Coming Soon</span>
-                      </div>
-                    ) : (
-                      <a
-                        href={app.appStoreUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-6 py-3 bg-navy-900 text-white rounded-full font-medium hover:bg-navy-800 transition-all shadow-sm hover:shadow-md group/link"
-                      >
-                        <Download size={18} />
-                        <span>Download on App Store</span>
-                        <ExternalLink size={16} className="opacity-70 group-hover/link:opacity-100 transition-opacity" />
-                      </a>
-                    )}
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-3">
+                      {app.comingSoon ? (
+                        <div className="inline-flex items-center gap-2 px-6 py-3 bg-navy-600 text-white rounded-full font-medium cursor-not-allowed opacity-75">
+                          <span>Coming Soon</span>
+                        </div>
+                      ) : (
+                        <a
+                          href={app.appStoreUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 px-6 py-3 bg-navy-900 text-white rounded-full font-medium hover:bg-navy-800 transition-all shadow-sm hover:shadow-md group/link"
+                        >
+                          <Download size={18} />
+                          <span>Download on App Store</span>
+                          <ExternalLink size={16} className="opacity-70 group-hover/link:opacity-100 transition-opacity" />
+                        </a>
+                      )}
+
+                      {(app.name === 'iMathurat Pro' || app.name === 'iManzil Pro') && (
+                        <Link
+                          to={app.name === 'iMathurat Pro' ? '/imathuratpro' : '/imanzilpro'}
+                          className="text-sm font-medium text-navy-700 hover:text-navy-900 underline underline-offset-4"
+                        >
+                          More
+                        </Link>
+                      )}
+                    </div>
                   </div>
                 </div>
               ))}
@@ -384,22 +396,35 @@ export const Store: React.FC = () => {
                   <p className="text-sm text-navy-600 mb-4 leading-relaxed line-clamp-2">
                     {app.description}
                   </p>
-                  {app.comingSoon ? (
-                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-navy-600 text-white rounded-full text-sm font-medium cursor-not-allowed opacity-75 w-full justify-center">
-                      <span>Coming Soon</span>
-                    </div>
-                  ) : (
-                    <a
-                      href={app.appStoreUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-4 py-2 bg-navy-900 text-white rounded-full text-sm font-medium hover:bg-navy-800 transition-all w-full justify-center group/link"
-                    >
-                      <Download size={16} />
-                      <span>Get</span>
-                      <ExternalLink size={14} className="opacity-70 group-hover/link:opacity-100 transition-opacity" />
-                    </a>
-                  )}
+                  <div className="flex flex-col gap-2">
+                    {app.comingSoon ? (
+                      <div className="inline-flex items-center gap-2 px-4 py-2 bg-navy-600 text-white rounded-full text-sm font-medium cursor-not-allowed opacity-75 w-full justify-center">
+                        <span>Coming Soon</span>
+                      </div>
+                    ) : (
+                      <a
+                        href={app.appStoreUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-4 py-2 bg-navy-900 text-white rounded-full text-sm font-medium hover:bg-navy-800 transition-all w-full justify-center group/link"
+                      >
+                        <Download size={16} />
+                        <span>Get</span>
+                        <ExternalLink size={14} className="opacity-70 group-hover/link:opacity-100 transition-opacity" />
+                      </a>
+                    )}
+
+                    {(app.name === 'iMathurat Pro' || app.name === 'iManzil Pro') && (
+                      <div className="flex justify-center">
+                        <Link
+                          to={app.name === 'iMathurat Pro' ? '/imathuratpro' : '/imanzilpro'}
+                          className="text-xs font-medium text-navy-700 hover:text-navy-900 underline underline-offset-4"
+                        >
+                          More
+                        </Link>
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
             ))}
