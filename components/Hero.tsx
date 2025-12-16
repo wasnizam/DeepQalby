@@ -74,11 +74,11 @@ export const Hero: React.FC = () => {
 
       {/* Apple-Style Fade Transition Gallery */}
       <div 
-        className="relative max-w-6xl mx-auto px-6 mb-8 group"
+        className="relative max-w-6xl mx-auto px-4 sm:px-6 mb-8 group"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
-        <div className="relative aspect-square md:aspect-[4/3] max-h-[700px] md:max-h-[800px]">
+        <div className="relative min-h-[500px] sm:min-h-[600px] md:aspect-[4/3] md:min-h-0 md:max-h-[800px]">
           {/* Images with fade transition */}
           {images.map((image, index) => (
             <div
@@ -90,26 +90,26 @@ export const Hero: React.FC = () => {
               <img 
                 src={image.src} 
                 alt={image.alt} 
-                className="w-full h-full max-w-5xl max-h-[700px] md:max-h-[800px] object-contain"
+                className="w-full h-full max-w-full sm:max-w-4xl md:max-w-5xl max-h-[500px] sm:max-h-[600px] md:max-h-[800px] object-contain"
                 style={{ background: 'transparent' }}
               />
             </div>
           ))}
 
-          {/* Minimal Navigation Arrows - Only show on hover */}
+          {/* Minimal Navigation Arrows - Visible on mobile, show on hover for desktop */}
           <button
             onClick={goToPrevious}
-            className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-navy-900 rounded-full p-1.5 md:p-2 shadow-md transition-all opacity-0 group-hover:opacity-100 hover:scale-110 z-20"
+            className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 bg-white/90 md:bg-white/80 hover:bg-white text-navy-900 rounded-full p-2 md:p-2 shadow-lg md:shadow-md transition-all opacity-100 md:opacity-0 md:group-hover:opacity-100 hover:scale-110 z-20"
             aria-label="Previous image"
           >
-            <ChevronLeft size={20} className="md:w-6 md:h-6" />
+            <ChevronLeft size={24} className="md:w-6 md:h-6" />
           </button>
           <button
             onClick={goToNext}
-            className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-navy-900 rounded-full p-1.5 md:p-2 shadow-md transition-all opacity-0 group-hover:opacity-100 hover:scale-110 z-20"
+            className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 bg-white/90 md:bg-white/80 hover:bg-white text-navy-900 rounded-full p-2 md:p-2 shadow-lg md:shadow-md transition-all opacity-100 md:opacity-0 md:group-hover:opacity-100 hover:scale-110 z-20"
             aria-label="Next image"
           >
-            <ChevronRight size={20} className="md:w-6 md:h-6" />
+            <ChevronRight size={24} className="md:w-6 md:h-6" />
           </button>
 
           {/* Minimal Dot Indicators - Apple style */}
