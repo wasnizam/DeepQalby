@@ -7,7 +7,7 @@ export const IManzilLanding: React.FC = () => {
   const [lang, setLang] = useState<Language>('en');
   const isEN = lang === 'en';
 
-  const appStoreUrl = '#'; // Replace with real App Store URL when ready
+  const appStoreUrl = 'https://apps.apple.com/app/imanzil-pro/idYOUR_APP_ID'; // Replace with real App Store URL
 
   const handleShare = async () => {
     try {
@@ -88,13 +88,15 @@ export const IManzilLanding: React.FC = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-6">
-              <button
-                disabled
-                className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-navy-600 text-white font-medium cursor-not-allowed opacity-80"
+              <a
+                href={appStoreUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-navy-900 text-white font-medium hover:bg-navy-800 transition-all shadow-lg hover:shadow-xl"
               >
                 <Download size={18} />
-                <span>{isEN ? 'Coming Soon to App Store' : 'Akan Datang di App Store'}</span>
-              </button>
+                <span>{isEN ? 'Download on App Store' : 'Muat Turun di App Store'}</span>
+              </a>
               <a
                 href="/store"
                 className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full border border-warm-100 bg-warm-white text-navy-900 font-medium hover:bg-warm-50 transition-all"
@@ -313,13 +315,15 @@ export const IManzilLanding: React.FC = () => {
               ? 'iManzil Pro is built to help you stay consistent, understand more and feel spiritually protected every day.'
               : 'iManzil Pro dibina untuk bantu anda kekal konsisten, lebih faham dan rasa lebih terlindung setiap hari.'}
           </p>
-          <button
-            disabled
-            className="inline-flex items-center gap-2 px-10 py-4 rounded-full bg-navy-600 text-white font-medium cursor-not-allowed opacity-80"
+          <a
+            href={appStoreUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-10 py-4 rounded-full bg-navy-900 text-white font-medium hover:bg-navy-800 transition-all shadow-lg hover:shadow-xl"
           >
             <Download size={20} />
-            <span>{isEN ? 'Coming Soon to App Store' : 'Akan Datang di App Store'}</span>
-          </button>
+            <span>{isEN ? 'Download on App Store' : 'Muat Turun di App Store'}</span>
+          </a>
         </div>
       </section>
     </div>

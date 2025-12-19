@@ -21,10 +21,10 @@ const apps: App[] = [
     description: 'Protection and peace of mind through daily litanies. Your spiritual shield.',
     category: 'FaithTech',
     icon: '/assets/1.png',
-    appStoreUrl: '#',
+    appStoreUrl: 'https://apps.apple.com/app/imanzil-pro/idYOUR_APP_ID',
     rating: 4.9,
     featured: false,
-    comingSoon: true
+    comingSoon: false
   },
   {
     id: '2',
@@ -32,10 +32,10 @@ const apps: App[] = [
     description: 'Complete Ruqyah solution for spiritual healing and protection. Comprehensive Islamic healing practices.',
     category: 'FaithTech',
     icon: '/assets/2.png',
-    appStoreUrl: '#',
+    appStoreUrl: 'https://apps.apple.com/ng/app/ruqyah360/id6756375302',
     rating: 4.8,
     featured: false,
-    comingSoon: true
+    comingSoon: false
   },
   {
     id: '3',

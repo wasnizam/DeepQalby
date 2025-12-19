@@ -7,7 +7,7 @@ export const RuqyahLanding: React.FC = () => {
   const [lang, setLang] = useState<Language>('en');
   const isEN = lang === 'en';
 
-  const appStoreUrl = '#'; // Replace with real App Store URL when ready
+  const appStoreUrl = 'https://apps.apple.com/ng/app/ruqyah360/id6756375302';
 
   const handleShare = async () => {
     try {
@@ -308,13 +308,15 @@ export const RuqyahLanding: React.FC = () => {
               ? 'Ruqyah360 is designed to make authentic spiritual guidance accessible, calm and guided — wherever you are.'
               : 'Ruqyah360 direka untuk menjadikan bimbingan spiritual yang sahih lebih mudah dicapai, tenang dan terpimpin — di mana sahaja anda berada.'}
           </p>
-          <button
-            disabled
-            className="inline-flex items-center gap-2 px-10 py-4 rounded-full bg-navy-600 text-white font-medium cursor-not-allowed opacity-80"
+          <a
+            href={appStoreUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-10 py-4 rounded-full bg-navy-900 text-white font-medium hover:bg-navy-800 transition-all shadow-lg hover:shadow-xl"
           >
             <Download size={20} />
-            <span>{isEN ? 'Coming Soon to App Store' : 'Akan Datang di App Store'}</span>
-          </button>
+            <span>{isEN ? 'Download on App Store' : 'Muat Turun di App Store'}</span>
+          </a>
         </div>
       </section>
     </div>
