@@ -45,9 +45,15 @@ export const Contact: React.FC = () => {
                 <div>
                   <h3 className="font-semibold text-navy-900 mb-1">Product Support</h3>
                   <p className="text-navy-600">
-                    Using Tawaf Counter or iManzil Pro?
+                    Using Ruqyah360, Tawaf Counter or iManzil Pro?
                   </p>
                   <p className="text-sm text-navy-600/60 mt-1">Use the form to submit bug reports or feature requests.</p>
+                  <p className="text-sm text-navy-600/60 mt-1">
+                    Ruqyah360 support:{' '}
+                    <a className="underline" href="mailto:nizam.sabian@gmail.com">nizam.sabian@gmail.com</a>
+                    {' · '}
+                    <a className="underline" href="/ruqyah360/privacy">Privacy Policy</a>
+                  </p>
                 </div>
               </div>
 

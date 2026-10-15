@@ -14,6 +14,7 @@ import { IMathuratLanding } from './pages/iMathuratLanding';
 import { IManzilLanding } from './pages/iManzilLanding';
 import { TawafLanding } from './pages/TawafLanding';
 import { RuqyahLanding } from './pages/RuqyahLanding';
+import { RuqyahPrivacy } from './pages/RuqyahPrivacy';
 import { Apps } from './pages/Apps';
 
 const ScrollToTop = () => {
@@ -41,6 +42,7 @@ function App() {
             <Route path="/imanzilpro" element={<IManzilLanding />} />
             <Route path="/tawafcounter" element={<TawafLanding />} />
             <Route path="/ruqyah360" element={<RuqyahLanding />} />
+            <Route path="/ruqyah360/privacy" element={<RuqyahPrivacy />} />
             <Route path="/apps" element={<Apps />} />
             <Route path="/expertise" element={<Expertise />} />
             <Route path="/services" element={<Services />} />
